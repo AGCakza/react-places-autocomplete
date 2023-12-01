@@ -1,9 +1,9 @@
-export const geocodeByAddress = address => {
+export const geocodeByAddress = (address, language) => {
   const geocoder = new window.google.maps.Geocoder();
   const OK = window.google.maps.GeocoderStatus.OK;
 
   return new Promise((resolve, reject) => {
-    geocoder.geocode({ address }, (results, status) => {
+    geocoder.geocode({ address, language: language ?? 'fr' }, (results, status) => {
       if (status !== OK) {
         reject(status);
       }
